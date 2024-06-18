@@ -1,5 +1,7 @@
 package com.recomiendo.recomiendo_app.Entities;
 
+import java.util.List;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import jakarta.persistence.Entity;
@@ -21,10 +23,10 @@ public class User {
     private String password;
     private String phone;
     private String location;
-    private String [] image;
-    private Store [] toDoStores;
-    private Store [] favoriteStores;
-    private Review [] reviews;
+    private List<String> images;
+    private List<Store> toDoStores;
+    private List<Store> favoriteStores;
+    private List<Review> reviews;
 
 
     public String getId() {
@@ -69,30 +71,29 @@ public class User {
     public void setLocation(String location) {
         this.location = location;
     }
-    public String[] getImage() {
-        return image;
+    public List<String> getImages() {
+        return images;
     }
-    public void setImage(String[] image) {
-        this.image = image;
+    public void setImages(List<String> images) {
+        this.images = images;
     }
-    public Store[] getToDoStores() {
+    public List<Store> getToDoStores() {
         return toDoStores;
     }
-    public void setToDoStores(Store[] toDoStores) {
+    public void setToDoStores(List<Store> toDoStores) {
         this.toDoStores = toDoStores;
     }
-    public Store[] getFavoriteStores() {
+    public List<Store> getFavoriteStores() {
         return favoriteStores;
     }
-    public void setFavoriteStores(Store[] favoriteStores) {
+    public void setFavoriteStores(List<Store> favoriteStores) {
         this.favoriteStores = favoriteStores;
     }
-    public Review[] getReviews() {
+    public List<Review> getReviews() {
         return reviews;
     }
-    public void setReviews(Review[] reviews) {
+    public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
     }
-
     
 }

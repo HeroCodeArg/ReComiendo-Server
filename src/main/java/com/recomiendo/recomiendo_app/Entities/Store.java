@@ -1,5 +1,7 @@
 package com.recomiendo.recomiendo_app.Entities;
 
+import java.util.List;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import jakarta.persistence.Entity;
@@ -19,20 +21,20 @@ public class Store {
     private String address;
     private String city;
     private String state;
-    private String zip;
+    private String zipcode;
     private String email;
     private String phone;
     private String description;
     //VER HORARIOS Y DIAS DE APERTURA
-    private String [] socialMedia;
-    private String [] images;
+    private List<String> socialMedia; // Ver de hacer un clave valor -> ("Instagram" -> "@store")
+    private List<String> images;
     private int rating; //Average rating 1 to 5.
     private boolean vegan; 
     private boolean vegetarian;
     private boolean glutenFree;
     private boolean lactoseFree;
-    private Review [] reviews;
-    private Product [] products;
+    private List<Review> reviews;
+    private List<Product> products;
 
     public String getId() {
         return id;
@@ -64,11 +66,11 @@ public class Store {
     public void setState(String state) {
         this.state = state;
     }
-    public String getZip() {
-        return zip;
+    public String getZipcode() {
+        return zipcode;
     }
-    public void setZip(String zip) {
-        this.zip = zip;
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
     }
     public String getEmail() {
         return email;
@@ -88,16 +90,16 @@ public class Store {
     public void setDescription(String description) {
         this.description = description;
     }
-    public String[] getSocialMedia() {
+    public List<String> getSocialMedia() {
         return socialMedia;
     }
-    public void setSocialMedia(String[] socialMedia) {
+    public void setSocialMedia(List<String> socialMedia) {
         this.socialMedia = socialMedia;
     }
-    public String[] getImages() {
+    public List<String> getImages() {
         return images;
     }
-    public void setImages(String[] images) {
+    public void setImages(List<String> images) {
         this.images = images;
     }
     public int getRating() {
@@ -130,16 +132,16 @@ public class Store {
     public void setLactoseFree(boolean lactoseFree) {
         this.lactoseFree = lactoseFree;
     }
-    public Review[] getReviews() {
+    public List<Review> getReviews() {
         return reviews;
     }
-    public void setReviews(Review[] reviews) {
+    public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
     }
-    public Product[] getProducts() {
+    public List<Product> getProducts() {
         return products;
     }
-    public void setProducts(Product[] products) {
+    public void setProducts(List<Product> products) {
         this.products = products;
     }
 

@@ -2,28 +2,31 @@ package com.recomiendo.recomiendo_app.Entities;
 
 import java.util.Date;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+@Document(collection = "reviews")
 @Entity
 public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     private String message;
     private int rating; // 1 - 5.
-    private Long userId;
-    private Long storeId;
+    private String userId;
+    private String storeId;
     private Date reviewDate;  //Automatica cuando crea?
     
-    public Long getId() {
+    public String getId() {
         return id;
     }
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
     public String getMessage() {
@@ -38,16 +41,16 @@ public class Review {
     public void setRating(int rating) {
         this.rating = rating;
     }
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
-    public Long getStoreId() {
+    public String getStoreId() {
         return storeId;
     }
-    public void setStoreId(Long storeId) {
+    public void setStoreId(String storeId) {
         this.storeId = storeId;
     }
     public Date getReviewDate() {

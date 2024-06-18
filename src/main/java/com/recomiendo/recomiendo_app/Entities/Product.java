@@ -1,31 +1,34 @@
 package com.recomiendo.recomiendo_app.Entities;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+@Document(collection = "products")
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     private String name;
     private Double price;
     private String description;
     private String image;
     private String category;
-    private Long storeId;
+    private String storeId;
     private boolean vegan;
     private boolean vegetarian;
     private boolean glutenFree;
     private boolean lactoseFree;
     private boolean chefsRecommendation;
     
-    public Long getId() {
+    public String getId() {
         return id;
     }
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
     public String getName() {
@@ -58,10 +61,10 @@ public class Product {
     public void setCategory(String category) {
         this.category = category;
     }
-    public Long getStoreId() {
+    public String getStoreId() {
         return storeId;
     }
-    public void setStoreId(Long storeId) {
+    public void setStoreId(String storeId) {
         this.storeId = storeId;
     }
     public boolean isVegan() {

@@ -31,13 +31,18 @@ public class ProductController {
     @GetMapping("/{id}")
     public Product getProductById(@PathVariable String id) {
         return productRepository.findById(id)
-        .orElseThrow(() -> new RuntimeException("Product whit ID "+id+" not found."));
+            .orElseThrow(() -> new RuntimeException("Product whit ID "+id+" not found."));
+    }
+
+    @PostMapping
+    public Product createProduct(@RequestBody Product newProduct) {
+        return productRepository.save(newProduct);
     }
 
     @PutMapping("/{id}")
     public Product updateProduct(@PathVariable String id, @RequestBody Product updatedProduct) {
         Product product = productRepository.findById(id)
-        .orElseThrow(() -> new RuntimeException("Product whit ID "+id+" not found."));
+            .orElseThrow(() -> new RuntimeException("Product whit ID "+id+" not found."));
         
         product.setName(updatedProduct.getName());
         product.setPrice(updatedProduct.getPrice());
@@ -57,7 +62,7 @@ public class ProductController {
     @DeleteMapping("/{id}")
     public Product deleteProduct(@PathVariable String id) {
         Product product = productRepository.findById(id)
-        .orElseThrow(() -> new RuntimeException("Product whit ID "+id+" not found."));
+            .orElseThrow(() -> new RuntimeException("Product whit ID "+id+" not found."));
 
         productRepository.deleteById(id);
         return product;

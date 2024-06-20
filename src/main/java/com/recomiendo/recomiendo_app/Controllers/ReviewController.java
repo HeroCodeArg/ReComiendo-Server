@@ -30,7 +30,7 @@ public class ReviewController {
     @GetMapping("/{id}")
     public Review getReviewById(@PathVariable String id) {
         return reviewRepository.findById(id)
-        .orElseThrow(() -> new RuntimeException("Review whit ID "+id+" not found"));
+            .orElseThrow(() -> new RuntimeException("Review whit ID "+id+" not found"));
     }
 
     @PostMapping
@@ -41,7 +41,7 @@ public class ReviewController {
     @PutMapping("/{id}")
     public Review updateReview(@PathVariable String id, @RequestBody Review updatedReview) {
         Review review = reviewRepository.findById(id)
-        .orElseThrow(() -> new RuntimeException("Review whit ID "+id+" not found"));
+            .orElseThrow(() -> new RuntimeException("Review whit ID "+id+" not found"));
 
         review.setMessage(updatedReview.getMessage());
         review.setRating(updatedReview.getRating());
@@ -54,7 +54,7 @@ public class ReviewController {
     @DeleteMapping("/{id}")
     public Review deleteReview(@PathVariable String id) {
         Review review = reviewRepository.findById(id)
-        .orElseThrow(() -> new RuntimeException("Review whit ID "+id+" not found"));
+            .orElseThrow(() -> new RuntimeException("Review whit ID "+id+" not found"));
 
         reviewRepository.deleteById(id);
         return review;

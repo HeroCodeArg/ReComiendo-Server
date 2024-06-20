@@ -30,7 +30,7 @@ public class UserController {
     @GetMapping("/{id}")
     public User getUserById(@PathVariable String id) {
         return userRepository.findById(id)
-        .orElseThrow(() -> new RuntimeException("User whit ID "+id+" not found."));
+            .orElseThrow(() -> new RuntimeException("User whit ID "+id+" not found."));
     }
 
     @PostMapping
@@ -41,7 +41,7 @@ public class UserController {
     @PutMapping("/{id}")
     public User updateUser(@PathVariable String id, @RequestBody User updatedUser) {
         User user = userRepository.findById(id)
-        .orElseThrow(() -> new RuntimeException("User whit ID "+id+" not found."));
+            .orElseThrow(() -> new RuntimeException("User whit ID "+id+" not found."));
     
         user.setName(updatedUser.getName());
         user.setSurname(updatedUser.getSurname());
@@ -62,7 +62,7 @@ public class UserController {
     @DeleteMapping("/{id}")
     public User deleteUser(@PathVariable String id) {
         User user = userRepository.findById(id)
-        .orElseThrow(() -> new RuntimeException("User whit ID "+id+" not found."));
+            .orElseThrow(() -> new RuntimeException("User whit ID "+id+" not found."));
 
         userRepository.delete(user);
         return user;

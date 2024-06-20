@@ -1,0 +1,21 @@
+# Use root/example as user/password credentials
+version: "3.9"
+
+services:
+  mongo:
+    image: mongo:latest
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+      - MONGO_INITDB_ROOT_DB=${MONGO_INITDB_ROOT_DB}
+    ports:
+      - "27017:27017"
+  spring-boot-app:
+    build: .
+    ports:
+      - "8080:8081"
+    depends_on:
+      - mongo
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@localhost:27017/recomiendoDB

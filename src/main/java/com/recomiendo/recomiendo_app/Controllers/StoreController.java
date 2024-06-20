@@ -29,7 +29,8 @@ public class StoreController {
 
     @GetMapping("/{id}")
     public Store getStoreById(@PathVariable String id) {
-        return storeRepository.findById(id).orElseThrow(() -> new RuntimeException("Store whit ID "+id+" not found."));
+        return storeRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Store whit ID "+id+" not found."));
     }
 
     @PostMapping
@@ -40,7 +41,8 @@ public class StoreController {
     @PutMapping("/{id}")
     public Store updateStore(@PathVariable String id, @RequestBody Store updatedStore) {
 
-        Store store = storeRepository.findById(id).orElseThrow(() -> new RuntimeException("Store whit ID "+id+" not found."));
+        Store store = storeRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Store whit ID "+id+" not found."));
         
         store.setName(updatedStore.getName());
         store.setAddress(updatedStore.getAddress());
@@ -66,9 +68,10 @@ public class StoreController {
 
     @DeleteMapping("/{id}")
     public Store deleteStore(@PathVariable String id) {
-        Store store = storeRepository.findById(id).orElseThrow(() -> new RuntimeException("Store whit ID "+id+" not found."));
+        Store store = storeRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Store whit ID "+id+" not found."));
+            
         storeRepository.deleteById(id);
-
         return store;
     }
 }
